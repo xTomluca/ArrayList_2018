@@ -390,23 +390,23 @@ void* al_pop(ArrayList* this,int index)
 ArrayList* al_subList(ArrayList* this,int from,int to)
 {
     void* returnAux = NULL;
-    int i,j=-1;
     ArrayList* aux = NULL;
+    int i;
     if(this!=NULL && (from>=0 && from <= this->size)&&(to>=0 && to <= this->size))
     {
 
         aux = al_newArrayList();
-        aux->size = this->size;//(to-from)+1;
-        aux->reservedSize = this->reservedSize; //(to-from)+1;
+        //aux->size = this->size;//(to-from)+1;
+        //aux->reservedSize = this->reservedSize; //(to-from)+1;
         if(aux!=NULL)
         {
             for(i=from;i<=to;i++)
             {
                 if(this->pElements[i]!=NULL)
                 {
-                    j++;
-                    aux->pElements[j] = this->pElements[i];
+                    aux->add(aux,this->get(this,i));
                     returnAux = aux;
+
                 }
             }
         }
@@ -454,27 +454,56 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
  * \return int Return (-1) if Error [pList or pFunc are NULL pointer]
  *                  - (0) if ok
  */
+
+                        ///PROTOTIPO PUNTERO A FUNCION;
 int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
 {
-    int i, swap ,returnAux = -1;
-    ArrayList* aux;
+    void* auxiliarSwap;
+    int i,swap,returnAux = -1;
     if(this!=NULL && pFunc!=NULL)
     {
-        returnAux = 1;
-        do
-        {
-            for(i=0;i<this->size;i++)
-            {
+        returnAux = 0;
+
                         /// DE MAYOR A MENOR                                   /// DE MENOR A MAYOR
-                if(((this->pElements[i]<this->pElements[i+1]) && order) || ((this->pElements[i]>this->pElements[i+1])&& !order))
+                if(!order)
                 {
-                    aux = this->pElements[i];
-                    this->pElements[i] =  this->pElements[i+1];
-                    this->pElements[i+1] = aux;
-                    swap=1;
+                    do
+                    {
+                        for(i=0;i<this->size-1;i++)
+                        {
+                            swap=0;
+                            //if(pFunc(this->pElements[i],this->pElements[i+1])>0)
+                            if(pFunc(al_get(this,i),al_get(this,i+1))>0)
+                            {
+                                auxiliarSwap = this->pElements[i];
+                                this->pElements[i]=this->pElements[i+1];
+                                this->pElements[i+1] = auxiliarSwap;
+                                swap=1;
+                            }
+                        }
+                    }while(swap);
                 }
-            }
-        }while(swap);
+                else
+                {
+                    do
+                    {
+
+                        for(i=0;i<this->size-1;i++)
+                        {
+                                swap=0;
+                                //if(pFunc(this->pElements[i],this->pElements[i+1])<0)
+                                if(pFunc(al_get(this,i),al_get(this,i+1))<0)
+                                {
+                                    auxiliarSwap = this->pElements[i];
+                                    this->pElements[i]=this->pElements[i+1];
+                                    this->pElements[i+1] = auxiliarSwap;
+                                    swap=1;
+                                }
+                        }
+                    }while(swap);
+                }
+
+
     }
 
     return returnAux;
@@ -515,6 +544,7 @@ int resizeUp(ArrayList* this)
 int expand(ArrayList* this,int index)
 {
     int returnAux = -1;
+
 
     return returnAux;
 }
