@@ -548,14 +548,14 @@ int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
         {
             for(i=1;i<this->size;i++)
             {
-                aux = this->pElements[i];
+                aux = this->get(this,i);
                 j=i-1;
                 while(j>=0 && (pFunc(aux,this->pElements[j]))==1) // temp<data[j] o temp>data[j]
                 {
                     this->pElements[j+1] = this->pElements[j];
                     j--;
                 }
-                this->pElements[j+1] = aux; // inserción
+                al_set(this,j,aux); // inserción
             }
         }
         else
