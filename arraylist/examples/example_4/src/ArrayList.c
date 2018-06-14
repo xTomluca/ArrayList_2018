@@ -392,7 +392,7 @@ ArrayList* al_subList(ArrayList* this,int from,int to)
     void* returnAux = NULL;
     ArrayList* aux = NULL;
     int i;
-    if(this!=NULL && (from>=0 && from <= this->size)&&(to>=0 && to <= this->size))
+    if(this!=NULL && ((to>=from) && from>=0 && from <= this->size)&&(to>=0 && to <= this->size))
     {
 
         aux = al_newArrayList();
@@ -402,13 +402,9 @@ ArrayList* al_subList(ArrayList* this,int from,int to)
         {
             for(i=from;i<=to;i++)
             {
-                if(this->pElements[i]!=NULL)
-                {
                     aux->add(aux,this->get(this,i));
-                    returnAux = aux;
-
-                }
             }
+            returnAux = aux;
         }
     }
     return returnAux ;
@@ -457,57 +453,176 @@ int al_containsAll(ArrayList* this,ArrayList* this2)
 
                         ///PROTOTIPO PUNTERO A FUNCION;
 int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
-{
+/*{
     void* auxiliarSwap;
-    int i,swap,returnAux = -1;
-    if(this!=NULL && pFunc!=NULL)
+    int i,j,returnAux = -1;
+    if(this!=NULL && pFunc!=NULL && (order==1 || !order))
     {
+
+        /// DE MAYOR A MENOR                                   /// DE MENOR A MAYOR
+        if(order==1)
+        {
+            for(i=0;i<this->size-1;i++)
+            {
+                for(j=i+1;j<this->size;j++)
+                {
+                    ///if(pFunc(this->pElements[i],this->pElements[i+1])>0)
+                    if(pFunc(al_get(this,i),al_get(this,j))>0)
+                    {
+                        auxiliarSwap = this->pElements[i];
+                        this->pElements[i]=this->pElements[j];
+                        this->pElements[j] = auxiliarSwap;
+                    }
+                }
+
+            }
+        }
+        else
+        {
+            for(i=0;i<this->size-1;i++)
+            {
+                for(j=i+1;j<this->size;j++)
+                {
+                                    ///if(pFunc(this->pElements[i],this->pElements[i+1])<0)
+                    if(pFunc(al_get(this,i),al_get(this,j))<0)
+                    {
+                        auxiliarSwap = this->pElements[i];
+                        this->pElements[i]=this->pElements[j];
+                        this->pElements[j] = auxiliarSwap;
+                    }
+                }
+            }
+        }
+        returnAux=0;
+    }
+    return returnAux;
+
+}*/
+/**int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
+{
+    int returnAux = -1;
+    int i,j;
+    void* auxSwap;
+
+    if(this!=NULL && pFunc!=NULL && (order == 0 || order == 1))
+    {
+        if(order)
+        {
+            for(i=1;i<this->size;i++)
+            {
+                auxSwap = this->pElements[i];
+                j=i-1;
+                while(j>=0 && (pFunc(auxSwap,this->pElements[j]))==1)
+                {
+                 this->pElements[j+1] = this->pElements[j];
+                 j--;
+                }
+                this->pElements[j+1]=auxSwap;
+            }
+        }
+        else
+        {
+            for(i=1;i<this->size;i++)
+            {
+                auxSwap = this->pElements[i];
+                j=i-1;
+                while(j>=0 && (pFunc(auxSwap,this->pElements[j]))==-1)
+                {
+                 this->pElements[j+1] = this->pElements[j];
+                 j--;
+                }
+                this->pElements[j+1]=auxSwap;
+            }
+        }
         returnAux = 0;
+    }
+    return returnAux;
+}**/
 
-                        /// DE MAYOR A MENOR                                   /// DE MENOR A MAYOR
-                if(!order)
+{
+    int i,j,auxReturn=-1;
+    void *aux;
+    if(this!=NULL && pFunc!=NULL && (order == 0 || order == 1))
+    {
+        if(order)
+        {
+            for(i=1;i<this->size;i++)
+            {
+                aux = this->pElements[i];
+                j=i-1;
+                while(j>=0 && (pFunc(aux,this->pElements[j]))==1) // temp<data[j] o temp>data[j]
                 {
-                    do
-                    {
-                        for(i=0;i<this->size-1;i++)
-                        {
-                            swap=0;
-                            //if(pFunc(this->pElements[i],this->pElements[i+1])>0)
-                            if(pFunc(al_get(this,i),al_get(this,i+1))>0)
-                            {
-                                auxiliarSwap = this->pElements[i];
-                                this->pElements[i]=this->pElements[i+1];
-                                this->pElements[i+1] = auxiliarSwap;
-                                swap=1;
-                            }
-                        }
-                    }while(swap);
+                    this->pElements[j+1] = this->pElements[j];
+                    j--;
                 }
-                else
+                this->pElements[j+1] = aux; // inserción
+            }
+        }
+        else
+        {
+            for(i=1;i<this->size;i++)
+            {
+                aux = this->pElements[i];
+                j=i-1;
+                while(j>=0 && (pFunc(aux,this->pElements[j]))==-1) // temp<data[j] o temp>data[j]
                 {
-                    do
-                    {
-
-                        for(i=0;i<this->size-1;i++)
-                        {
-                                swap=0;
-                                //if(pFunc(this->pElements[i],this->pElements[i+1])<0)
-                                if(pFunc(al_get(this,i),al_get(this,i+1))<0)
-                                {
-                                    auxiliarSwap = this->pElements[i];
-                                    this->pElements[i]=this->pElements[i+1];
-                                    this->pElements[i+1] = auxiliarSwap;
-                                    swap=1;
-                                }
-                        }
-                    }while(swap);
+                    this->pElements[j+1] = this->pElements[j];// al_get(this,j);
+                    j--;
                 }
+                this->pElements[j+1] = aux; // inserción
+            }
 
-
+        }
+        auxReturn = 0;
     }
 
-    return returnAux;
+    return auxReturn;
 }
+
+/**int al_sort(ArrayList* this, int (*pFunc)(void* ,void*), int order)
+{
+    int returnAux = -1;
+    int i,j,z;
+    void* auxSwap;
+
+    if(this!=NULL && pFunc!=NULL && (order == 0 || order == 1))
+    {
+        if(order == 1 )
+        {
+            for(i=0;i<this->size-1;i++)
+            {
+                for(j=i+1;j<this->size;j++)
+                {
+                    // = pFunc(this->pElements[i],this->pElements[j]);
+                    if(pFunc(this->pElements[i],this->pElements[j])>0)
+                    {
+                        auxSwap = this->pElements[i];
+                        this->pElements[i] = this->pElements[j];
+                        this->pElements[j] = auxSwap;
+                    }
+                }
+            }
+        }
+        else
+        {
+            for(i=0;i<this->size-1;i++)
+            {
+                for(j=i+1;j<this->size;j++)
+                {
+                    z = pFunc(this->pElements[i],this->pElements[j]);
+                    if(z<0)
+                    {
+                        auxSwap = this->pElements[i];
+                        this->pElements[i] = this->pElements[j];
+                        this->pElements[j] = auxSwap;
+                    }
+                }
+            }
+        }
+        returnAux = 0;
+    }
+    return returnAux;
+}**/
 
 
 /** \brief Increment the number of elements in pList in AL_INCREMENT elements.
