@@ -4,6 +4,7 @@
 #include "persona.h"
 int parserEmployee(char* fileName, ArrayList* pArrayList);
 int printfEmployee(ArrayList* pArrayList);
+int compareSort(ArrayList* pArrayList, ArrayList* pBlackList);
 
 int main()
 {
@@ -55,12 +56,13 @@ int parserEmployee(char* fileName, ArrayList* pArrayList)
     }
     return 0;
 }
-int compareSort(ArrayList* pArrayList, ArrayList* pBlackList)
-int i;
-for(i=0;i<al_len(blackList);i++)
-{
-    ArrayList* aux = al_get(blackList,i++);
-    int index = al_indexOf()
+int compareSort(ArrayList* pArrayList, ArrayList* pBlackList){
 
+    int i;
+    for(i=0;i<al_len(pArrayList);i++)
+    {
+
+    }
+    return 0;
 }
 
