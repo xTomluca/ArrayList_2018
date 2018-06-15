@@ -61,7 +61,7 @@ int compareSort(ArrayList* pArrayList, ArrayList* pBlackList){
     int i;
     for(i=0;i<al_len(pArrayList);i++)
     {
-
+       gay
     }
     return 0;
 }

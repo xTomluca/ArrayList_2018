@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<ActiveTarget name="Debug" />
+	<File name="ArrayList.c" open="1" top="0" tabpos="2">
+		<Cursor position="700" topLine="27" />
+	</File>
+	<File name="ArrayList.h" open="1" top="0" tabpos="5">
+		<Cursor position="2515" topLine="51" />
+	</File>
+	<File name="main.c" open="1" top="1" tabpos="1">
+		<Cursor position="1452" topLine="50" />
+	</File>
+	<File name="persona.c" open="1" top="0" tabpos="3">
+		<Cursor position="0" topLine="18" />
+	</File>
+	<File name="persona.h" open="1" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
+	</File>
+</CodeBlocks_layout_file>
