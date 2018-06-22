@@ -130,6 +130,7 @@ int Empleado_getSueldo(Empleado* this,int* sueldo)
     - Las primeras 120 horas la hora vale $180
     - De 120 a 160 horas, la hora vale $240
     - De 160 a 240 horas, la hora vale $350 */
+
 void em_calcularSueldo(void* p)
 {
     int horasTrabajadas,horasPromedio;

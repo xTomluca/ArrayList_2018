@@ -57,5 +57,22 @@ int main()
 
 int generarArchivoSueldos(char* fileName,ArrayList* listaEmpleados)
 {
+    FILE* fp = fopen(fileName,"w");
+    Empleado* aux;
+    int i,id,horasTrabajadas,sueldo;
+    char nombre[50];
+    if(fp!=NULL)
+    {
+        for(i=0;i<al_len(listaEmpleados);i++)
+        {
+            aux = al_get(listaEmpleados,i);
+            Empleado_getId(aux,&id);
+            Empleado_getNombre(aux,nombre);
+            Empleado_getHorasTrabajadas(aux,&horasTrabajadas);
+            Empleado_getSueldo(aux, &sueldo);
+            printf("\n\n\n  %d",sueldo);
+            fprintf(fp,"\n%d,%s,%d,%d",id,nombre,horasTrabajadas,sueldo);
+        }
+    }
     return 1;
 }

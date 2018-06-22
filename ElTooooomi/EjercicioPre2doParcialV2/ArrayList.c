@@ -561,6 +561,7 @@ int al_map(ArrayList* this, int (*pFunc)(void*))
         for(i=0;i<al_len(this);i++)
         {
             pFunc(al_get(this,i));
+            returnAux=0;
         }
     }
     return returnAux;
