@@ -38,7 +38,7 @@ int main()
     {
         // Calcular sueldos
         printf("Calculando sueldos de empleados\n");
-        //al_map(listaEmpleados,em_calcularSueldo);
+        al_map(listaEmpleados,em_calcularSueldo);
 
         // Generar archivo de salida
         if(generarArchivoSueldos("sueldos.csv",listaEmpleados)==1)
