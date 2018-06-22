@@ -4,8 +4,8 @@
 	<File name="../inc/ArrayList.h" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="ArrayList.c" open="1" top="0" tabpos="2">
-		<Cursor position="13996" topLine="434" />
+	<File name="ArrayList.c" open="0" top="0" tabpos="2">
+		<Cursor position="13996" topLine="663" />
 	</File>
 	<File name="main.c" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
@@ -55,7 +55,7 @@
 	<File name="../testing/src/thirdTest.c" open="0" top="0" tabpos="9">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="../../../utest.c" open="1" top="0" tabpos="1">
+	<File name="../../../utest.c" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="63" />
 	</File>
 	<File name="../../../utest.h" open="0" top="0" tabpos="5">

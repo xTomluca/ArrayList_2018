@@ -1,0 +1,33 @@
+# depslib dependency file v1.0
+1529628442 source:/home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/ArrayList.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"ArrayList.h"
+
+1529617622 /home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/ArrayList.h
+
+1529628369 source:/home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/Empleado.c
+	"Empleado.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1529622627 /home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/Empleado.h
+
+1529623374 source:/home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/Parser.c
+	<stdio.h>
+	<stdlib.h>
+	"ArrayList.h"
+	"Empleado.h"
+
+1529621180 source:/home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/main.c
+	<stdio.h>
+	<stdlib.h>
+	"Empleado.h"
+	"ArrayList.h"
+	"Parser.h"
+
+1529543258 /home/alumno/ArrayList_2018/ElTooooomi/EjercicioPre2doParcialV2/Parser.h
+	"ArrayList.h"
+
